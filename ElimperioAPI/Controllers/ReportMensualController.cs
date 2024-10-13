@@ -22,14 +22,14 @@ namespace ElimperioAPI.Controllers
         {
             try
             {
-                var reporte = await _reportMensualService.GetReporteMensualAsync(mes, año);
+                var reportes = await _reportMensualService.ObtenerPorMesYAñoAsync(mes, año);
 
-                if (reporte == null)
+                if (reportes == null || !reportes.Any())
                 {
                     return NotFound($"No se encontró un reporte mensual para el mes {mes} y el año {año}.");
                 }
 
-                return Ok(reporte);
+                return Ok(reportes);
             }
             catch (Exception ex)
             {
@@ -51,7 +51,7 @@ namespace ElimperioAPI.Controllers
             try
             {
                 // Llamamos al servicio para crear el reporte
-                await _reportMensualService.CrearReporteMensualAsync(nuevoReporte);
+                await _reportMensualService.CrearAsync(nuevoReporte);
 
                 return CreatedAtAction(nameof(GetReporteMensual), new { mes = nuevoReporte.Mes, año = nuevoReporte.Año }, nuevoReporte);
             }

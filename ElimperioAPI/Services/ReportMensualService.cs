@@ -4,7 +4,6 @@ using ElImperioReportes.Models;
 using ElimperioAPI.Data;
 using MongoDB.Bson;
 
-
 namespace ElimperioAPI.Services
 {
     public class ReportMensualService
@@ -18,8 +17,8 @@ namespace ElimperioAPI.Services
             var clienteMongo = new MongoClient(configuracionBD.Value.CadenaConexion);
             var BaseDatos = clienteMongo.GetDatabase(configuracionBD.Value.NombreBaseDatos);
 
-            // Obtén la colección de reportes mensuales
-            _reporteMensualCollection = BaseDatos.GetCollection<ReporteMensual>(configuracionBD.Value.ColeccionImperio);
+            // Obtén la colección de reportes mensuales, usando la clave "ColeccionReportesMensuales"
+            _reporteMensualCollection = BaseDatos.GetCollection<ReporteMensual>(configuracionBD.Value.ColeccionReportesMensuales);
         }
 
         // Método para obtener todos los reportes mensuales
@@ -37,19 +36,9 @@ namespace ElimperioAPI.Services
             return await _reporteMensualCollection.Find(filter).ToListAsync();
         }
 
-        //
-        // Método para obtener el reporte mensual basado en un mes y año
-        public async Task<List<ReporteMensual>> GetReporteMensualAsync(int mes, int año)
-        {
-            var filter = Builders<ReporteMensual>.Filter.Where(reporte => reporte.Mes == mes && reporte.Año == año);
-            return await _reporteMensualCollection.Find(filter).ToListAsync();
-        }
-        //
         // Método para agregar un nuevo reporte mensual
-        public async Task CrearReporteMensualAsync(ReporteMensual nuevoReporte)
-        {
+        public async Task CrearAsync(ReporteMensual nuevoReporte) =>
             await _reporteMensualCollection.InsertOneAsync(nuevoReporte);
-        }
 
         // Método para actualizar un reporte mensual basado en su id
         public async Task ActualizarAsync(string id, ReporteMensual reporteActualizado) =>
