@@ -22,7 +22,7 @@ builder.Services.Configure<ImperioDBsettings>(
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<ProductoService>();
 
-// Configuración de ReportMensualService
+// Configuración de ReportlService
 builder.Services.AddSingleton<ReportMensualService>();
 builder.Services.AddSingleton<ReportSemanalService>();
 builder.Services.AddSingleton<InventarioService>();
