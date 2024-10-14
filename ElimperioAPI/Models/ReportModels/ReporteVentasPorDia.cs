@@ -3,11 +3,13 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ElImperioReportes.Models
 {
-    public class ReporteVentasPorDia
+    public class VentaPorDia
     {
-        public decimal TotalVentasHoy { get; set; }
-        public int NumeroTransacciones { get; set; }
-        public decimal PromedioVentasPorTransaccion { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        public decimal TotalVentas { get; set; }
+        public int CantidadVentas { get; set; }
         public DateTime Fecha { get; set; }
     }
 }

@@ -31,6 +31,8 @@ builder.Services.AddSingleton<InventarioService>();
 builder.Services.AddSingleton<BebidaMasVendidaService>();
 builder.Services.AddSingleton<ProductoMasVendidoService>();
 builder.Services.AddSingleton<VentaGeneralService>();
+builder.Services.AddSingleton<VentaPorDiaService>();
+
 
 
 // Configurar JSON para mantener el formato de las propiedades
