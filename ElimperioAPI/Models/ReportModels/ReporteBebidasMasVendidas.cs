@@ -5,12 +5,13 @@ namespace ElImperioReportes.Models
 {
     public class BebidaMasVendida
     {
-        public string NombreBebida { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; } // El Id puede ser nulo para que lo genere MongoDB automáticamente
+        public string NombreBebida { get; set; } = null!;
         public int CantidadVendida { get; set; }
-    }
-    public class ReporteBebidasMasVendidas
-    {
-        public List<BebidaMasVendida> Bebidas { get; set; }
-        public DateTime Fecha { get; set; }
+        public decimal IngresosGenerados { get; set; }
+        public int Mes { get; set; }
+        public int Año { get; set; }
     }
 }
