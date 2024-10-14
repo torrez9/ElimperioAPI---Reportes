@@ -27,6 +27,8 @@ builder.Services.AddSingleton<ReportMensualService>();
 builder.Services.AddSingleton<ReportSemanalService>();
 builder.Services.AddSingleton<InventarioService>();
 builder.Services.AddSingleton<BebidaMasVendidaService>();
+builder.Services.AddSingleton<ProductoMasVendidoService>();
+
 
 
 
