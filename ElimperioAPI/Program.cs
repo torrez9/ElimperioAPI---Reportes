@@ -16,7 +16,9 @@ builder.Services.AddSwaggerGen();
 
 // Configuración de MongoDB
 builder.Services.Configure<ImperioDBsettings>(
-    builder.Configuration.GetSection("ConfiguraciónBaseDatos"));
+builder.Configuration.GetSection("ConfiguraciónBaseDatos"));
+
+
 
 // Agregar servicios singleton para la aplicación
 builder.Services.AddSingleton<UserService>();
@@ -28,9 +30,6 @@ builder.Services.AddSingleton<ReportSemanalService>();
 builder.Services.AddSingleton<InventarioService>();
 builder.Services.AddSingleton<BebidaMasVendidaService>();
 builder.Services.AddSingleton<ProductoMasVendidoService>();
-
-
-
 
 
 // Configurar JSON para mantener el formato de las propiedades
