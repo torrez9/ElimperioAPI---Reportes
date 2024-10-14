@@ -6,6 +6,7 @@
         public string NombreBaseDatos { get; set; } = null!;
         public string ColeccionImperio { get; set; } = null!;
         public string ColeccionReportesMensuales { get; set; } = null!;
+        public string ColeccionReportesSemanales { get; set; } = null!; // Nueva propiedad para la colección semanal
 
         // Método para validar que los campos esenciales no sean nulos o vacíos
         public void ValidarConfiguraciones()

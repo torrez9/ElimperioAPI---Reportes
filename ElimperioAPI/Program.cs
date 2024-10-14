@@ -24,6 +24,8 @@ builder.Services.AddSingleton<ProductoService>();
 
 // Configuración de ReportMensualService
 builder.Services.AddSingleton<ReportMensualService>();
+builder.Services.AddSingleton<ReportSemanalService>();
+
 
 // Configurar JSON para mantener el formato de las propiedades
 builder.Services.AddControllers().AddJsonOptions(options =>
