@@ -30,11 +30,12 @@ builder.Services.AddSingleton<ReportSemanalService>();
 builder.Services.AddSingleton<InventarioService>();
 builder.Services.AddSingleton<BebidaMasVendidaService>();
 builder.Services.AddSingleton<ProductoMasVendidoService>();
+builder.Services.AddSingleton<VentaGeneralService>();
 
 
 // Configurar JSON para mantener el formato de las propiedades
 builder.Services.AddControllers().AddJsonOptions(options =>
-    options.JsonSerializerOptions.PropertyNamingPolicy = null);
+options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
 //// Configuración de JWT
 //var jwtSettings = builder.Configuration.GetSection("JwtSettings");

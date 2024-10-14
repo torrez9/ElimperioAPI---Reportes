@@ -6,6 +6,7 @@
         public string NombreBaseDatos { get; set; } = null!;
         public string ColeccionImperio { get; set; } = null!;
         public string ColeccionInventario { get; set; } = null!;
+        public string ColeccionVentaGeneral { get; set; } = null!;
         public string ColeccionProductoMasVendido { get; set; } = null!;
         public string ColeccionBebidaMasVendida { get; set; } = null!;
         public string ColeccionReportesMensuales { get; set; } = null!;

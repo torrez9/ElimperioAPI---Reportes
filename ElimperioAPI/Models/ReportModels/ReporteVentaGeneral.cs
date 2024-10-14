@@ -3,12 +3,15 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ElImperioReportes.Models
 {
-    public class ReporteVentaGeneral
+    public class VentaGeneral
     {
-        public decimal TotalVentasAcumuladas { get; set; }
-        public int NumeroTotalTransacciones { get; set; }
-        public decimal PromedioVentasPorTransaccion { get; set; }
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        public decimal TotalVentas { get; set; }
+        public int CantidadVentas { get; set; }
+        public decimal Ganancias { get; set; }
+        public int Mes { get; set; }
+        public int Año { get; set; }
     }
 }
