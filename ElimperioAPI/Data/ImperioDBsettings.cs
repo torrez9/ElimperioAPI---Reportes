@@ -24,6 +24,10 @@
                 throw new ArgumentException("El nombre de la colección Imperio no puede ser nulo o vacío.", nameof(ColeccionImperio));
             if (string.IsNullOrEmpty(ColeccionInventario))
                 throw new ArgumentException("El nombre de la colección Inventario no puede ser nulo o vacío.", nameof(ColeccionInventario));
+            if (string.IsNullOrEmpty(ColeccionVentaGeneral))
+                throw new ArgumentException("El nombre de la colección Venta General no puede ser nulo o vacío.", nameof(ColeccionVentaGeneral));
+            if (string.IsNullOrEmpty(ColeccionVentaPorDia))
+                throw new ArgumentException("El nombre de la colección Venta por Día no puede ser nulo o vacío.", nameof(ColeccionVentaPorDia));
             if (string.IsNullOrEmpty(ColeccionProductoMasVendido))
                 throw new ArgumentException("El nombre de la colección Producto Más Vendido no puede ser nulo o vacío.", nameof(ColeccionProductoMasVendido));
             if (string.IsNullOrEmpty(ColeccionBebidaMasVendida))
