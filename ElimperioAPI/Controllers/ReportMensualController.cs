@@ -16,6 +16,28 @@ namespace ElimperioAPI.Controllers
             _reportMensualService = reportMensualService;
         }
 
+        // Acción para obtener todos los reportes mensuales sin filtrar
+        [HttpGet("todos")]
+        public async Task<IActionResult> GetTodosLosReportesMensuales()
+        {
+            try
+            {
+                var reportes = await _reportMensualService.ObtenerTodosAsync();
+
+                if (reportes == null || !reportes.Any())
+                {
+                    return NotFound("No se encontraron reportes mensuales.");
+                }
+
+                return Ok(reportes);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores genéricos
+                return StatusCode(500, $"Error al obtener los reportes mensuales: {ex.Message}");
+            }
+        }
+
         // Acción para obtener el reporte mensual por mes y año
         [HttpGet("{mes}/{año}")]
         public async Task<IActionResult> GetReporteMensual(int mes, int año)

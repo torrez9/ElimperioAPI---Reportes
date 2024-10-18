@@ -21,8 +21,8 @@ namespace ElimperioAPI.Services
             _reporteMensualCollection = BaseDatos.GetCollection<ReporteMensual>(configuracionBD.Value.ColeccionReportesMensuales);
         }
 
-        // Método para obtener todos los reportes mensuales
-        public async Task<List<ReporteMensual>> ObtenerAsync() =>
+        // Método para obtener todos los reportes mensuales (sin filtros)
+        public async Task<List<ReporteMensual>> ObtenerTodosAsync() =>
             await _reporteMensualCollection.Find(_ => true).ToListAsync();
 
         // Método para obtener un reporte mensual basado en su id
