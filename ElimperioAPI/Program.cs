@@ -18,8 +18,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<ImperioDBsettings>(
 builder.Configuration.GetSection("ConfiguraciónBaseDatos"));
 
-
-
 // Agregar servicios singleton para la aplicación
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<ProductoService>();
