@@ -13,6 +13,8 @@
         public string ColeccionReportesMensuales { get; set; } = null!;
         public string ColeccionReportesSemanales { get; set; } = null!;
 
+
+
         // Método para validar que los campos esenciales no sean nulos o vacíos
         public void ValidarConfiguraciones()
         {
