@@ -9,18 +9,22 @@ namespace ElImperioReportes.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; } // Deja que MongoDB genere este campo automáticamente.
 
-        [BsonElement("Ventas totales")]
+        [BsonElement("VentasTotales")]
         public int VentasTotales { get; set; }
 
-        [BsonElement("Productos vendidos")]
+        [BsonElement("ProductosVendidos")]
         public int ProductosVendidos { get; set; }
 
-        [BsonElement("Clientes atendidos")]
+        [BsonElement("ClientesAtendidos")]
         public int ClientesAtendidos { get; set; }
+
+        [BsonElement("Descripcion")]
         public string Descripcion { get; set; }
 
-        [BsonElement("Promedio de ventas diarias")]
+        [BsonElement("PromedioVentasDiarias")]
         public double PromedioVentasDiarias { get; set; }
+
+        [BsonElement("Semana")]
         public int Semana { get; set; }
 
         [BsonElement("Año")]

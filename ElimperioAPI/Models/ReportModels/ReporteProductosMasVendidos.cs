@@ -9,13 +9,13 @@ namespace ElImperioReportes.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [BsonElement("Nombre del producto")]
+        [BsonElement("NombreProducto")]
         public string NombreProducto { get; set; } = null!;
 
-        [BsonElement("Cantidad de productos vendidos")]
+        [BsonElement("CantidadVendida")]
         public int CantidadVendida { get; set; }
 
-        [BsonElement("Ganacias generadas")]
+        [BsonElement("IngresosGenerados")]
         public decimal IngresosGenerados { get; set; }
 
         [BsonElement("Mes")]

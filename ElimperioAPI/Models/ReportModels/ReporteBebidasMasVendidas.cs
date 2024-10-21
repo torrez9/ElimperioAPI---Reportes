@@ -9,19 +9,19 @@ namespace ElImperioReportes.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; } // El Id que lo genere MongoDB automáticamente
 
-        [BsonElement("Nombre de la Bebida")]
+        [BsonElement("NombreBebida")]
         public string NombreBebida { get; set; } = null!;
 
-        [BsonElement("Cantidad de Bebidas vendidas")]
+        [BsonElement("CantidadVendida")]
         public int CantidadVendida { get; set; }
 
-        [BsonElement("Ganancias")]
+        [BsonElement("IngresosGenerados")]
         public decimal IngresosGenerados { get; set; }
 
-        [BsonElement("Meses")]
+        [BsonElement("Mes")]
         public int Mes { get; set; }
 
-        [BsonElement("Año de bebidas")]
+        [BsonElement("Año")]
         public int Año { get; set; }
     }
 }

@@ -9,13 +9,13 @@ namespace ElImperioReportes.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [BsonElement("Total ventas")]
+        [BsonElement("TotalVentas")]
         public decimal TotalVentas { get; set; }
 
-        [BsonElement("Cantidad de ventas")]
+        [BsonElement("CantidadVentas")]
         public int CantidadVentas { get; set; }
 
-        [BsonElement("Fecha de ventas")]
+        [BsonElement("Fecha")]
         public DateTime Fecha { get; set; }
     }
 }

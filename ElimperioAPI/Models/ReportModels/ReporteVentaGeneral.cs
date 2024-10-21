@@ -9,10 +9,10 @@ namespace ElImperioReportes.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [BsonElement("Total de ventas")]
+        [BsonElement("TotalVentas")]
         public decimal TotalVentas { get; set; }
 
-        [BsonElement("Cantidad vendida")]
+        [BsonElement("CantidadVentas")]
         public int CantidadVentas { get; set; }
 
         [BsonElement("Ganancias")]

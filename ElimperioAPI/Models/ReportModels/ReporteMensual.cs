@@ -7,24 +7,24 @@ public class ReporteMensual
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
 
-    [BsonElement("ventas Totales")]
+    [BsonElement("VentasTotales")]
     public double VentasTotales { get; set; }
 
-    [BsonElement("Productos vendidos")]
+    [BsonElement("ProductosVendidos")]
     public int ProductosVendidos { get; set; }
 
-    [BsonElement("Clientes atendidos")]
+    [BsonElement("ClientesAtendidos")]
     public int ClientesAtendidos { get; set; }
 
-    [BsonElement("nombre del Reporte mensual")]
+    [BsonElement("Descripcion")]
     public string Descripcion { get; set; }
 
-    [BsonElement("Promedio de ventas diarias")]
+    [BsonElement("PromedioVentasDiarias")]
     public double PromedioVentasDiarias { get; set; }
 
     [BsonElement("Mes")]
     public int Mes { get; set; }
 
-    [BsonElement("año")]
+    [BsonElement("Año")]
     public int Año { get; set; }
 }

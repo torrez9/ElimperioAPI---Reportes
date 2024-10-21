@@ -9,19 +9,19 @@ namespace ElImperioReportes.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = ObjectId.GenerateNewId().ToString();  // Se generará automáticamente
 
-        [BsonElement("Productos Totales")]
+        [BsonElement("ProductosTotales")]
         public int ProductosTotales { get; set; }
 
-        [BsonElement("Productos en el inventario")]
+        [BsonElement("ProductosEnStock")]
         public int ProductosEnStock { get; set; }
 
-        [BsonElement("Productos agotados")]
+        [BsonElement("ProductosAgotados")]
         public int ProductosAgotados { get; set; }
 
-        [BsonElement("Nombre de los productos")]
+        [BsonElement("Descripcion")]
         public string Descripcion { get; set; }
 
-        [BsonElement("Fecha de los productos")]
+        [BsonElement("FechaActualizacion")]
         public DateTime FechaActualizacion { get; set; }
     }
 }
