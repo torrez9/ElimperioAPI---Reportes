@@ -17,14 +17,10 @@ namespace ElImperioReportes.Models
 
         [BsonElement("Clientes atendidos")]
         public int ClientesAtendidos { get; set; }
-
-        [BsonElement("Nombre del reporte semanal")]
         public string Descripcion { get; set; }
 
         [BsonElement("Promedio de ventas diarias")]
         public double PromedioVentasDiarias { get; set; }
-
-        [BsonElement("Semana #")]
         public int Semana { get; set; }
 
         [BsonElement("Año")]
