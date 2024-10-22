@@ -28,6 +28,19 @@ namespace ElimperioAPI.Controllers
             return Ok(reporte);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetInventarios()
+        {
+            var reportes = await _inventarioService.ObtenerAsync();
+
+            if (reportes == null || !reportes.Any())
+            {
+                return NotFound("No se encontraron reportes de inventario.");
+            }
+
+            return Ok(reportes);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CrearReporteInventario([FromBody] ReporteInventario nuevoReporte)
         {
