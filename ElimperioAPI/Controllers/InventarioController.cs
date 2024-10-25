@@ -15,6 +15,7 @@ namespace ElimperioAPI.Controllers
             _inventarioService = inventarioService;
         }
 
+        // Obtener inventario por ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetInventario(string id)
         {
@@ -28,6 +29,7 @@ namespace ElimperioAPI.Controllers
             return Ok(reporte);
         }
 
+        // Obtener inventario
         [HttpGet]
         public async Task<IActionResult> GetInventarios()
         {
@@ -41,6 +43,7 @@ namespace ElimperioAPI.Controllers
             return Ok(reportes);
         }
 
+        // Crear Inventario
         [HttpPost]
         public async Task<IActionResult> CrearReporteInventario([FromBody] ReporteInventario nuevoReporte)
         {
