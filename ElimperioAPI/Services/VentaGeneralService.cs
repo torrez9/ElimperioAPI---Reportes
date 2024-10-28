@@ -28,9 +28,11 @@ namespace ElimperioAPI.Services
             return await _ventaGeneralCollection.Find(filter).ToListAsync();
         }
 
+        //Crear Venta general
         public async Task CrearAsync(VentaGeneral nuevaVentaGeneral) =>
             await _ventaGeneralCollection.InsertOneAsync(nuevaVentaGeneral);
 
+        //venta actualizada
         public async Task ActualizarAsync(string id, VentaGeneral ventaActualizada) =>
             await _ventaGeneralCollection.ReplaceOneAsync(x => x.Id == id, ventaActualizada);
     }
