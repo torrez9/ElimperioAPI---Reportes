@@ -15,6 +15,28 @@ namespace ElimperioAPI.Controllers
             _ventaGeneralService = ventaGeneralService;
         }
 
+        // Acción para obtener todas las ventas generales sin filtros
+        [HttpGet("todas")]
+        public async Task<IActionResult> GetTodasLasVentasGenerales()
+        {
+            try
+            {
+                var ventas = await _ventaGeneralService.ObtenerAsync();
+
+                if (ventas == null || !ventas.Any())
+                {
+                    return NotFound("No se encontraron registros de ventas generales.");
+                }
+
+                return Ok(ventas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener las ventas generales: {ex.Message}");
+            }
+        }
+
+        // Acción para obtener las ventas generales por mes y año
         [HttpGet("{mes}/{año}")]
         public async Task<IActionResult> GetVentaGeneral(int mes, int año)
         {
@@ -28,6 +50,7 @@ namespace ElimperioAPI.Controllers
             return Ok(ventas);
         }
 
+        // Acción para crear un nuevo registro de venta general
         [HttpPost]
         public async Task<IActionResult> CrearVentaGeneral([FromBody] VentaGeneral nuevaVentaGeneral)
         {

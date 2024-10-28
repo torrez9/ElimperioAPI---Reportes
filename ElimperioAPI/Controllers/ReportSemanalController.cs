@@ -16,6 +16,27 @@ namespace ElimperioAPI.Controllers
             _reportSemanalService = reportSemanalService;
         }
 
+        // Acción para obtener todos los reportes semanales sin filtrar
+        [HttpGet("todos")]
+        public async Task<IActionResult> GetTodosLosReportesSemanales()
+        {
+            try
+            {
+                var reportes = await _reportSemanalService.ObtenerAsync();
+
+                if (reportes == null || !reportes.Any())
+                {
+                    return NotFound("No se encontraron reportes semanales.");
+                }
+
+                return Ok(reportes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener los reportes semanales: {ex.Message}");
+            }
+        }
+
         // Acción para obtener el reporte semanal por semana y año
         [HttpGet("{semana}/{año}")]
         public async Task<IActionResult> GetReporteSemanal(int semana, int año)
