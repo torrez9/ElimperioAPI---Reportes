@@ -16,8 +16,17 @@ namespace ElimperioAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<List<BebidaMasVendida>> Get() =>
-            await _bebidaMasVendidaService.ObtenerAsync();
+        public async Task<IActionResult> Get()
+        {
+            var bebidas = await _bebidaMasVendidaService.ObtenerAsync();
+            if (bebidas == null || !bebidas.Any())
+            {
+                return NotFound("No se encontraron bebidas más vendidas.");
+            }
+
+            return Ok(bebidas);
+        }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<BebidaMasVendida>> Get(string id)
@@ -63,5 +72,6 @@ namespace ElimperioAPI.Controllers
             await _bebidaMasVendidaService.EliminarAsync(id);
             return NoContent();
         }
+
     }
 }

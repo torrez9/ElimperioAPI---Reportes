@@ -16,13 +16,11 @@ builder.Services.AddSwaggerGen();
 
 // Configuración de MongoDB
 builder.Services.Configure<ImperioDBsettings>(
-builder.Configuration.GetSection("ConfiguraciónBaseDatos"));
+    builder.Configuration.GetSection("ConfiguraciónBaseDatos"));
 
 // Agregar servicios singleton para la aplicación
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<ProductoService>();
-
-// Configuración de ReportlService
 builder.Services.AddSingleton<ReportMensualService>();
 builder.Services.AddSingleton<ReportSemanalService>();
 builder.Services.AddSingleton<InventarioService>();
@@ -31,32 +29,39 @@ builder.Services.AddSingleton<ProductoMasVendidoService>();
 builder.Services.AddSingleton<VentaGeneralService>();
 builder.Services.AddSingleton<VentaPorDiaService>();
 
-
-
 // Configurar JSON para mantener el formato de las propiedades
 builder.Services.AddControllers().AddJsonOptions(options =>
-options.JsonSerializerOptions.PropertyNamingPolicy = null);
+    options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
-//// Configuración de JWT
-//var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-//builder.Services.AddAuthentication(options =>
-//{
-//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//})
-//.AddJwtBearer(options =>
-//{
-//    options.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuer = true,
-//        ValidateAudience = true,
-//        ValidateLifetime = true,
-//        ValidateIssuerSigningKey = true,
-//        ValidIssuer = jwtSettings["Issuer"],
-//        ValidAudience = jwtSettings["Audience"],
-//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
-//    };
-//});
+// Configuración de CORS para permitir el acceso desde todas las fuentes (ajústalo según sea necesario)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
+// Configuración de JWT
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+    };
+});
 
 var app = builder.Build();
 
@@ -69,6 +74,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAllOrigins"); // Aplicar política de CORS
 
 app.UseAuthentication(); // Habilitar autenticación JWT
 app.UseAuthorization();  // Habilitar autorización

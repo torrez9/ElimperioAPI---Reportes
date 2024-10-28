@@ -31,4 +31,5 @@ namespace ElimperioAPI.Services
         public async Task EliminarAsync(string id) =>
             await _bebidaMasVendidaCollection.DeleteOneAsync(x => x.Id == id);
     }
+
 }
