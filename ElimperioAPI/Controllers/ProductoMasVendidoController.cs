@@ -15,6 +15,28 @@ namespace ElimperioAPI.Controllers
             _productoMasVendidoService = productoMasVendidoService;
         }
 
+        // Acción para obtener todos los productos más vendidos sin filtros
+        [HttpGet("todos")]
+        public async Task<IActionResult> GetTodosLosProductosMasVendidos()
+        {
+            try
+            {
+                var productos = await _productoMasVendidoService.ObtenerAsync();
+
+                if (productos == null || !productos.Any())
+                {
+                    return NotFound("No se encontraron registros de productos más vendidos.");
+                }
+
+                return Ok(productos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener los productos más vendidos: {ex.Message}");
+            }
+        }
+
+        // Acción para obtener el producto más vendido por mes y año
         [HttpGet("{mes}/{año}")]
         public async Task<IActionResult> GetProductoMasVendido(int mes, int año)
         {
@@ -28,6 +50,7 @@ namespace ElimperioAPI.Controllers
             return Ok(producto);
         }
 
+        // Acción para crear un nuevo registro de producto más vendido
         [HttpPost]
         public async Task<IActionResult> CrearProductoMasVendido([FromBody] ProductoMasVendido nuevoProducto)
         {

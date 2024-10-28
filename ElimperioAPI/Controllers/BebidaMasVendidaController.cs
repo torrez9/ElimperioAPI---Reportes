@@ -15,6 +15,7 @@ namespace ElimperioAPI.Controllers
             _bebidaMasVendidaService = bebidaMasVendidaService;
         }
 
+        //Obtener todos sin filtros
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -27,7 +28,7 @@ namespace ElimperioAPI.Controllers
             return Ok(bebidas);
         }
 
-
+        //Obtener todos por ID
         [HttpGet("{id}")]
         public async Task<ActionResult<BebidaMasVendida>> Get(string id)
         {
@@ -39,6 +40,7 @@ namespace ElimperioAPI.Controllers
             return bebida;
         }
 
+        //Crear Bebidas
         [HttpPost]
         public async Task<IActionResult> Post(BebidaMasVendida nuevaBebida)
         {
@@ -46,6 +48,7 @@ namespace ElimperioAPI.Controllers
             return CreatedAtAction(nameof(Get), new { id = nuevaBebida.Id }, nuevaBebida);
         }
 
+        //Editar por ID
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, BebidaMasVendida bebidaActualizada)
         {
@@ -60,6 +63,7 @@ namespace ElimperioAPI.Controllers
             return NoContent();
         }
 
+        //Eliminar
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
