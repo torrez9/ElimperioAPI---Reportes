@@ -4,6 +4,8 @@ using System.Text;
 using ElimperioAPI.Models;
 using ElimperioAPI.Services;
 using ElimperioAPI.Data;
+using ElImperioReportes.Services;
+using ElImperioReportes.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,8 @@ builder.Services.AddSingleton<BebidaMasVendidaService>();
 builder.Services.AddSingleton<ProductoMasVendidoService>();
 builder.Services.AddSingleton<VentaGeneralService>();
 builder.Services.AddSingleton<VentaPorDiaService>();
+builder.Services.AddSingleton<PlatoMasVendidoService>();
+
 
 // Configurar JSON para mantener el formato de las propiedades
 builder.Services.AddControllers().AddJsonOptions(options =>
@@ -42,26 +46,26 @@ builder.Services.AddCors(options =>
                           .AllowAnyHeader());
 });
 
-// Configuración de JWT
-var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtSettings["Issuer"],
-        ValidAudience = jwtSettings["Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
-    };
-});
+//// Configuración de JWT
+//var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+//builder.Services.AddAuthentication(options =>
+//{
+//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//})
+//.AddJwtBearer(options =>
+//{
+//    options.TokenValidationParameters = new TokenValidationParameters
+//    {
+//        ValidateIssuer = true,
+//        ValidateAudience = true,
+//        ValidateLifetime = true,
+//        ValidateIssuerSigningKey = true,
+//        ValidIssuer = jwtSettings["Issuer"],
+//        ValidAudience = jwtSettings["Audience"],
+//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
+//    };
+//});
 
 var app = builder.Build();
 

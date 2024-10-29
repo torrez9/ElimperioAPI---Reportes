@@ -12,6 +12,7 @@
         public string ColeccionBebidaMasVendida { get; set; } = null!;
         public string ColeccionReportesMensuales { get; set; } = null!;
         public string ColeccionReportesSemanales { get; set; } = null!;
+        public string ColeccionPlatoMasVendido { get; set; } = null!;
 
 
 
