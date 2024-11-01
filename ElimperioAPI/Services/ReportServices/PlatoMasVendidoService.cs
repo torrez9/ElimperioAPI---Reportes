@@ -3,7 +3,7 @@ using MongoDB.Driver;
 using ElImperioReportes.Models;
 using ElimperioAPI.Data;
 
-namespace ElImperioReportes.Services
+namespace ElimperioAPI.Services.ReportServices
 {
     public class PlatoMasVendidoService
     {

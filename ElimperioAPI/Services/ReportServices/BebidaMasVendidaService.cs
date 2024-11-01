@@ -3,7 +3,7 @@ using ElImperioReportes.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace ElimperioAPI.Services
+namespace ElimperioAPI.Services.ReportServices
 {
     public class BebidaMasVendidaService
     {

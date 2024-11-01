@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using ElimperioAPI.Data;
 
-namespace ElimperioAPI.Services
+namespace ElimperioAPI.Services.ReportServices
 {
     public class UserService
     {

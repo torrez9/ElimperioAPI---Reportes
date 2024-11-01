@@ -5,14 +5,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using ElimperioAPI.Models;
-using ElimperioAPI.Services;
+using ElimperioAPI.Services.ReportServices;
 
 
-namespace UniveridadAPI.Controllers
+namespace ElimperioAPI.Controllers.ReportControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController:ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly UserService _userService;
         private readonly IConfiguration _configuration;
@@ -48,12 +48,12 @@ namespace UniveridadAPI.Controllers
             return Ok("Usuario registrado exitosamente.");
         }
 
-        private string GenerateJwtToken(string username) 
+        private string GenerateJwtToken(string username)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            
+
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, username),

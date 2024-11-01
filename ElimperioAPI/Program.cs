@@ -2,10 +2,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ElimperioAPI.Models;
-using ElimperioAPI.Services;
 using ElimperioAPI.Data;
-using ElImperioReportes.Services;
 using ElImperioReportes.Models;
+using ElimperioAPI.Services.ReportServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

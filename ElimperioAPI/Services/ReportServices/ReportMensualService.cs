@@ -4,7 +4,7 @@ using ElImperioReportes.Models;
 using ElimperioAPI.Data;
 using MongoDB.Bson;
 
-namespace ElimperioAPI.Services
+namespace ElimperioAPI.Services.ReportServices
 {
     public class ReportMensualService
     {

@@ -1,9 +1,9 @@
-﻿using ElimperioAPI.Services;
+﻿using ElimperioAPI.Services.ReportServices;
 using ElImperioReportes.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace ElimperioAPI.Controllers
+namespace ElimperioAPI.Controllers.ReportControllers
 {
     [ApiController]
     [Route("api/[controller]")]

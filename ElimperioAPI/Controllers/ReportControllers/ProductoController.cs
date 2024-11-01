@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ElimperioAPI.Models;
-using ElimperioAPI.Services;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using Microsoft.Extensions.Options;
+using ElimperioAPI.Services.ReportServices;
 
-namespace ElimperioAPI.Controllers
+namespace ElimperioAPI.Controllers.ReportControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductoController:ControllerBase
+    public class ProductoController : ControllerBase
     {
         private readonly ProductoService _Productoservicios;
-        public ProductoController(ProductoService productoServicio)=> _Productoservicios = productoServicio;
+        public ProductoController(ProductoService productoServicio) => _Productoservicios = productoServicio;
         //[Authorize]
         [HttpGet]
 
@@ -31,7 +31,7 @@ namespace ElimperioAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear(Producto nuevoProducto)
         {
-            await _Productoservicios.CrearAsync(nuevoProducto); 
+            await _Productoservicios.CrearAsync(nuevoProducto);
             return CreatedAtAction(nameof(Obtener), new { id = nuevoProducto.Id }, nuevoProducto);
         }
 

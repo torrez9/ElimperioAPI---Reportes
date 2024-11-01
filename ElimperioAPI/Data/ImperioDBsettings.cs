@@ -5,6 +5,8 @@
         public string CadenaConexion { get; set; } = null!;
         public string NombreBaseDatos { get; set; } = null!;
         public string ColeccionImperio { get; set; } = null!;
+        
+        //
         public string ColeccionInventario { get; set; } = null!;
         public string ColeccionVentaGeneral { get; set; } = null!;
         public string ColeccionVentaPorDia { get; set; } = null!;

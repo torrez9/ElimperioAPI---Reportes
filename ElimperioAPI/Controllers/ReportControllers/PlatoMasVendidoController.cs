@@ -1,8 +1,8 @@
-﻿using ElImperioReportes.Models;
-using ElImperioReportes.Services;
+﻿using ElimperioAPI.Services.ReportServices;
+using ElImperioReportes.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ElImperioReportes.Controllers
+namespace ElimperioAPI.Controllers.ReportControllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -77,6 +77,6 @@ namespace ElImperioReportes.Controllers
             return NoContent();
         }
 
-        
+
     }
 }
